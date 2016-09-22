@@ -22,8 +22,8 @@ public class XmlSchreiber {
 											// dokumentes
 	private DocumentBuilder builder;// DokumentBuilder des dokumentes
 
-	/*
-	 * @ einen builder erstellen
+	/**
+	 * Erstelt ein DokumentBuilder
 	 */
 	public XmlSchreiber() {
 		factory = DocumentBuilderFactory.newInstance();
@@ -35,9 +35,12 @@ public class XmlSchreiber {
 		}
 	}
 
-	/*
-	 * @ Einen Dokument baum erstellen anhang der daten des Sensors der alts
-	 * argument gegeben ist
+	/**
+	 * Nimmt ein Sensor als argument und erselt ein Node baum anhang seine daten
+	 * unter document
+	 * 
+	 * @param sensor
+	 *            der sensor anhand wenn wir das dokument bauen
 	 */
 	public void sensorLaden(Sensor sensor) {
 		// Neues dokument erstellen
@@ -68,8 +71,12 @@ public class XmlSchreiber {
 		}
 	}
 
-	/*
-	 * @ Wir speichern das kreirte dokument unter filename
+	/**
+	 * Wir kreiern ein neues file auf filename
+	 * 
+	 * @param filename
+	 *            position wo wir unser neuen file haben wollen auf den
+	 *            kompjuter
 	 */
 	public void schreiben(String filename) {
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();

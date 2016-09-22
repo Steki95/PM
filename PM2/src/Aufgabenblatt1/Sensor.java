@@ -1,5 +1,11 @@
 package Aufgabenblatt1;
 
+/**
+ * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de), Mia
+ * Meister (mia.meister@haw-hamburg.de) Aufgabe: Aufgabenblatt 1, Aufgabe 1.2
+ * 
+ */
+
 import java.util.List;
 
 public class Sensor {

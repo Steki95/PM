@@ -10,11 +10,12 @@ import java.time.LocalDateTime;
 
 public class Test2 {
 
-	/*@
-	 * Testen ob der Leser richtig das dokuments liest
+	/**
+	 * Testet ob XmlLeser richtig liest
 	 */
 	@Test
 	public void testXmlLeser() {
+
 		XmlLeser leser = new XmlLeser("./src/Aufgabenblatt1/Sensor.xml");
 		Sensor sensor = leser.getSensor();
 		List<Messung> messungen;
@@ -23,11 +24,12 @@ public class Test2 {
 		double test;
 		for (int i = 0; i < messungen.size(); i++) {
 			test = messungen.get(i).getWert();
-			assertEquals(losungen[i],test,0.001);
+			assertEquals(losungen[i], test, 0.001);
 		}
 	}
-	/*@
-	 * Testen ob der Schreiber richtig dokumente schreibt
+
+	/**
+	 * Testet ob XmlSchreiber ein richtiges dokument kreiert
 	 */
 	@Test
 	public void testXmlSchreiber() {

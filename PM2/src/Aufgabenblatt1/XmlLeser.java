@@ -20,8 +20,11 @@ public class XmlLeser {
 
 	private Document document;// Das document was mit was wir arbeiten
 
-	/*
-	 * @ Offnet eine xml datei die sich unter filename befindet
+	/**
+	 * Offnet ein xml dokument auf filename
+	 * 
+	 * @param filename
+	 *            wo sich das Feil in kompjuter befindet
 	 */
 	public XmlLeser(String filename) {
 
@@ -47,9 +50,11 @@ public class XmlLeser {
 
 	}
 
-	/*
-	 * @ Nimmt alle Nodes des geofneten documentes und erschaft ein Sensor
-	 * object das dann zuruckgegeben wirdt
+	/**
+	 * Erschaft ein Sensor objekt anhang alle daten in denn xml und gibt es
+	 * zuruck
+	 * 
+	 * @return das Sensor objekt das kreiert wurden ist
 	 */
 	public Sensor getSensor() {
 		// Declaration alle variabeln die benutig sind
