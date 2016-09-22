@@ -20,9 +20,10 @@ public class Test2 {
 		List<Messung> messungen;
 		messungen = sensor.getMessungen();
 		double losungen[] = { 23.2, 24.5 };
+		double test;
 		for (int i = 0; i < messungen.size(); i++) {
-			System.out.println(losungen[i]);
-			System.out.println(messungen.get(i).getWert());
+			test = messungen.get(i).getWert();
+			assertEquals(losungen[i],test,0.001);
 		}
 	}
 	/*@
