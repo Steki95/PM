@@ -2,8 +2,8 @@ package Aufgabenblatt1;
 
 public class Pruefungsleistung {
 	
-	private String modulName;
-	private double note;
+	private String modulName;//Name des modules
+	private double note;//Note in denn modul
 	
 	public Pruefungsleistung(String modulName,double note){
 		this.modulName = modulName;

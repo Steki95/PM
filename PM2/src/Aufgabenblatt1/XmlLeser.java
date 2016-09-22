@@ -17,61 +17,76 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XmlLeser {
-	
-	private DocumentBuilderFactory factory;
-	private DocumentBuilder builder;
-	private Document document;
-	
-	public XmlLeser(String filename){
-		factory = DocumentBuilderFactory.newInstance();
+
+	private Document document;// Das document was mit was wir arbeiten
+
+	/*
+	 * @ Offnet eine xml datei die sich unter filename befindet
+	 */
+	public XmlLeser(String filename) {
+
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = null;
 		factory.setValidating(true);
+
 		try {
 			builder = factory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		try {
 			document = builder.parse(new File(filename));
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	public Sensor getSensor(){
+
+	/*
+	 * @ Nimmt alle Nodes des geofneten documentes und erschaft ein Sensor
+	 * object das dann zuruckgegeben wirdt
+	 */
+	public Sensor getSensor() {
+		// Declaration alle variabeln die benutig sind
 		NodeList nodeList = document.getElementsByTagName("Sensor");
 		Node node;
 		Element element;
 		List<Messung> messungen = new ArrayList<Messung>();
 		double wert;
 		LocalDateTime zeitstempel;
-		int id;
-		
+		String id;
+
+		// Node wird gleich Sensor node und
+		// unter id wird die id des sensors geschpeichert
 		node = nodeList.item(0);
-		element = (Element)node;
-		id = Integer.parseInt(element.getAttribute("id"));
-		if(node.hasChildNodes()){
+		element = (Element) node;
+		id = element.getAttribute("id");
+		// Wenn der sensor messungen hatt werden sie hier gellesen und
+		// hizugefugt
+		if (node.hasChildNodes()) {
+			// eine Nodeliste aller messungen erstellen
 			nodeList = node.getChildNodes();
-				for(int i = 0;i < nodeList.getLength(); i++){
-						node = nodeList.item(i);
-							if (node.getNodeType() == Node.ELEMENT_NODE) {
-								element = (Element)node;
-								wert = Double.parseDouble(element.getAttribute("wert"));
-								zeitstempel = LocalDateTime.parse(element.getAttribute("zeitstempel"));
-								messungen.add(new Messung(wert,zeitstempel));
-							}
+			// Durch alle messungen gehen und die messungen liste fullen
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				node = nodeList.item(i);
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+					element = (Element) node;
+					wert = Double.parseDouble(element.getAttribute("wert"));
+					zeitstempel = LocalDateTime.parse(element.getAttribute("zeitstempel"));
+					messungen.add(new Messung(wert, zeitstempel));
 				}
-				return new Sensor(id,messungen);
-		}
-		else{
+			}
+			// Den fertigen Sensor zuruckgeben
+			return new Sensor(id, messungen);
+		} else {
 			return null;
 		}
-		
+
 	}
 
 }

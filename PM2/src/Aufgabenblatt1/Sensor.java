@@ -1,19 +1,23 @@
 package Aufgabenblatt1;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Sensor {
 
-	private int id;
-	private List<Messung> messungen;
-	
-	public Sensor(int id,List<Messung> messungen){
+	private String id;// Id des sensors
+	private List<Messung> messungen;// Alle messungen der der Sensor gemacht
+									// hatt
+
+	public Sensor(String id, List<Messung> messungen) {
 		this.id = id;
 		this.messungen = messungen;
 	}
 
-	public int getId() {
+	public List<Messung> getMessungen() {
+		return messungen;
+	}
+
+	public String getId() {
 		return id;
 	}
 }
