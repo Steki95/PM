@@ -1,4 +1,4 @@
-package Aufgabenblatt1;
+package A1p2;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,12 +76,16 @@ public class XmlLeser {
 		if (node.hasChildNodes()) {
 			// eine Nodeliste aller messungen erstellen
 			nodeList = node.getChildNodes();
+			// string des wertes so das ich , mit . austauschen kann
+			String wertString;
 			// Durch alle messungen gehen und die messungen liste fullen
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				node = nodeList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					element = (Element) node;
-					wert = Double.parseDouble(element.getAttribute("wert"));
+					wertString = element.getAttribute("wert");
+					wertString = wertString.replace(',', '.');
+					wert = Double.parseDouble(wertString);
 					zeitstempel = LocalDateTime.parse(element.getAttribute("zeitstempel"));
 					messungen.add(new Messung(wert, zeitstempel));
 				}

@@ -6,7 +6,6 @@
 package Aufgabenblatt7;
 
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import java.util.ArrayList;
 import java.util.List;
 

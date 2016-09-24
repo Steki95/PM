@@ -1,12 +1,12 @@
-package Aufgabenblatt1;
+package A1p2;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import java.time.LocalDateTime;
 
 public class Test2 {
 
@@ -16,7 +16,7 @@ public class Test2 {
 	@Test
 	public void testXmlLeser() {
 
-		XmlLeser leser = new XmlLeser("./src/Aufgabenblatt1/Sensor.xml");
+		XmlLeser leser = new XmlLeser("./src/Resources/Sensor.xml");
 		Sensor sensor = leser.getSensor();
 		List<Messung> messungen;
 		messungen = sensor.getMessungen();
@@ -35,12 +35,12 @@ public class Test2 {
 	public void testXmlSchreiber() {
 		XmlSchreiber schreiber = new XmlSchreiber();
 		List<Messung> messungen = new ArrayList<Messung>();
-		messungen.add(new Messung(2.0, LocalDateTime.now()));
-		messungen.add(new Messung(2.0, LocalDateTime.now()));
+		messungen.add(new Messung(6.0, LocalDateTime.now()));
+		messungen.add(new Messung(6.0, LocalDateTime.now()));
 		Sensor sensor = new Sensor("Test", messungen);
 		schreiber.sensorLaden(sensor);
-		schreiber.schreiben("./src/Aufgabenblatt1/Test.xml");
-		XmlLeser leser = new XmlLeser("./src/Aufgabenblatt1/Test.xml");
+		schreiber.schreiben("./src/Resources/Test.xml");
+		XmlLeser leser = new XmlLeser("./src/Resources/Test.xml");
 		Sensor sensor2 = leser.getSensor();
 
 		assertEquals("Test", sensor2.getId());

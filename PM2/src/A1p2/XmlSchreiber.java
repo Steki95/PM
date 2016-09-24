@@ -1,10 +1,11 @@
-package Aufgabenblatt1;
+package A1p2;
 
 import java.io.File;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -12,7 +13,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
+import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 
 public class XmlSchreiber {
@@ -63,6 +66,7 @@ public class XmlSchreiber {
 			messungElement = document.createElement("Messung");
 			// Attribute seten
 			wert = String.valueOf(messung.getWert());
+			wert = wert.replace('.', ',');
 			messungElement.setAttribute("wert", wert);
 			zeitstempel = messung.getZeitstempel().toString();
 			messungElement.setAttribute("zeitstempel", zeitstempel);
@@ -79,18 +83,25 @@ public class XmlSchreiber {
 	 *            kompjuter
 	 */
 	public void schreiben(String filename) {
+		// Transformer und TransformerFactory kreiren
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = null;
-
 		try {
 			transformer = transformerFactory.newTransformer();
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 		}
 
+		// alles auf neue linie schreiben
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		// <!DOCTYPE> hinzufugen
+		DOMImplementation domImpl = document.getImplementation();
+		DocumentType doctype = domImpl.createDocumentType("doctype", "-//Oberon//YOUR PUBLIC DOCTYPE//EN",
+				"Sensor.dtd");
+		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctype.getSystemId());
+
 		DOMSource source = new DOMSource(document);
 		StreamResult result = new StreamResult(new File(filename));
-
 		try {
 			transformer.transform(source, result);
 		} catch (TransformerException e) {

@@ -1,4 +1,4 @@
-package Aufgabenblatt1;
+package A1p2;
 
 /**
 * Praktikum TIPR2, WS 2016
