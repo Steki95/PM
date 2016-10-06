@@ -1,5 +1,11 @@
 package A1p2;
 
+/**
+ * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
+ * Dennis Bopp (dennis.bopp@haw-hamburg.de) 
+ * Aufgabe: Aufgabenblatt 1, Aufgabe 1.3
+ */
+
 import java.io.File;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,16 +25,21 @@ import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 
 public class XmlSchreiber {
-
-	private Document document;// Dokument welches wir spater speicher
-	private DocumentBuilderFactory factory;// DocumentBuilderFactory des
-											// dokumentes
-	private DocumentBuilder builder;// DokumentBuilder des dokumentes
+	
+	/**
+	 * Dokument welches wir spaeter speichern
+	 */
+	private Document document;
+	/**
+	 * DokumentBuilder des Dokuments
+	 */
+	private DocumentBuilder builder;
 
 	/**
-	 * Erstelt ein DokumentBuilder
+	 * Erstellt einen DokumentBuilder
 	 */
 	public XmlSchreiber() {
+		DocumentBuilderFactory factory;
 		factory = DocumentBuilderFactory.newInstance();
 		factory.setValidating(true);
 		try {
@@ -39,11 +50,11 @@ public class XmlSchreiber {
 	}
 
 	/**
-	 * Nimmt ein Sensor als argument und erselt ein Node baum anhang seine daten
-	 * unter document
+	 * Nimmt ein Sensor als Argument und erstellt einen Nodebaum anhand seiner Daten
+	 * in document
 	 * 
 	 * @param sensor
-	 *            der sensor anhand wenn wir das dokument bauen
+	 *            der Sensor denn wir als Xml schreiben wollen
 	 */
 	public void sensorLaden(Sensor sensor) {
 		// Neues dokument erstellen
@@ -52,8 +63,7 @@ public class XmlSchreiber {
 		Element sensorElement = document.createElement("Sensor");
 		document.appendChild(sensorElement);
 		sensorElement.setAttribute("id", sensor.getId());
-		// Alle variabeln notwending fuer ein Wert element wie auch ein wert
-		// element
+		// Alle variabeln notwending fuer ein Messungs element wie auch ein wert
 		Element messungElement;
 		String wert;
 		String zeitstempel;
@@ -76,11 +86,10 @@ public class XmlSchreiber {
 	}
 
 	/**
-	 * Wir kreiern ein neues file auf filename
+	 * Wir kreiern ein neues file unter filename
 	 * 
 	 * @param filename
-	 *            position wo wir unser neuen file haben wollen auf den
-	 *            kompjuter
+	 *            Position wo wir unsere neue file haben wollen
 	 */
 	public void schreiben(String filename) {
 		// Transformer und TransformerFactory kreiren
@@ -98,6 +107,7 @@ public class XmlSchreiber {
 		DOMImplementation domImpl = document.getImplementation();
 		DocumentType doctype = domImpl.createDocumentType("doctype", "-//Oberon//YOUR PUBLIC DOCTYPE//EN",
 				"Sensor.dtd");
+		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctype.getSystemId());
 
 		DOMSource source = new DOMSource(document);

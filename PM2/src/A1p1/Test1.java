@@ -1,5 +1,11 @@
 package A1p1;
 
+/**
+ * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
+ * Dennis Bopp (dennis.bopp@haw-hamburg.de) 
+ * Aufgabe: Aufgabenblatt 1, Aufgabe 1.1
+ */
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -11,7 +17,7 @@ import org.junit.Test;
 public class Test1 {
 
 	/**
-	 * Testet hash und equals methoden
+	 * Testet hash und equals Methoden
 	 */
 	@Test
 	public void testMethodeHashUndEquals() {
@@ -49,7 +55,8 @@ public class Test1 {
 		studentenliste.add(new Student("Belic", "Stefan", 0, leistungen));
 		// Kreirung des loeesungs arrays fuer vergleich
 		int loesungen[] = { 0, 1, 2, 3, 4 };
-		// Sortieren der studenten von der kleinsten bis zur hochste martikelnummer
+		// Sortieren der studenten von der kleinsten bis zur hochste
+		// martikelnummer
 		Collections.sort(studentenliste);
 		// testen ob sich die liste gedreht hat
 		for (int i = 0; i < studentenliste.size(); i++) {
