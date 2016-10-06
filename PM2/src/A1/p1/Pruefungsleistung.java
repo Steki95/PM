@@ -1,4 +1,4 @@
-package A1p1;
+package A1.p1;
 
 /**
  * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 

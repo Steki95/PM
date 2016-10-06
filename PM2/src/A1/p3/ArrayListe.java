@@ -1,4 +1,4 @@
-package A1p3;
+package A1.p3;
 
 /**
  * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
@@ -75,10 +75,12 @@ public class ArrayListe<T extends Comparable<T>> {
 	 */
 	public void entferneElementAnIndex(int i) {
 		if (i >= 0 && i < anzahlElemente) {
+			
 			for (int j = i; j < anzahlElemente - 1; j++) {
 				elemente[j] = elemente[j + 1];
 			}
 			anzahlElemente--;
+			elemente[anzahlElemente] = null;
 		}
 	}
 
@@ -110,7 +112,7 @@ public class ArrayListe<T extends Comparable<T>> {
 		T kleinstes_element = null;
 		if (anzahlElemente > 0) {
 			kleinstes_element = (T) elemente[0];
-			for (int i = 0; i < anzahlElemente; i++) {
+			for (int i = 1; i < anzahlElemente; i++) {
 				if (kleinstes_element.compareTo((T) elemente[i]) > 0) {
 					kleinstes_element = (T) elemente[i];
 				}

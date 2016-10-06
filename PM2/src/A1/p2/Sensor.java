@@ -1,4 +1,6 @@
-package A1p2;
+package A1.p2;
+
+import java.util.ArrayList;
 
 /**
  * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
@@ -19,13 +21,22 @@ public class Sensor {
 	 */
 	private List<Messung> messungen;
 
-	public Sensor(String id, List<Messung> messungen) {
+	public Sensor(String id) {
 		this.id = id;
-		this.messungen = messungen;
+		this.messungen = new ArrayList<Messung>();
+	}
+	
+	public void addMessung(Messung messung){
+		messungen.add(messung);
 	}
 
 	public List<Messung> getMessungen() {
-		return messungen;
+		
+		List<Messung> messungen2 = new ArrayList<Messung>();
+		for(int i=0; i< messungen.size();i++){
+			messungen2.add(messungen.get(i));
+		}
+		return messungen2;
 	}
 
 	public String getId() {

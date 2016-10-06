@@ -1,4 +1,4 @@
-package A1p3;
+package A1.p3;
 
 /**
  * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
@@ -22,6 +22,7 @@ public class Test3 {
 		Integer test = 2;
 		assertEquals(test,arrayList.get(0));
 	}
+	
 	@Test
 	public void testGetAnzahlElemente(){
 		ArrayListe<Integer> arrayList = new ArrayListe<Integer>();
@@ -31,6 +32,7 @@ public class Test3 {
 		int test = 3;
 		assertEquals(test,arrayList.getAnzahlElemente());
 	}
+	
 	@Test
 	public void testEntfernen(){
 		ArrayListe<Integer> arrayList = new ArrayListe<Integer>();
@@ -75,10 +77,15 @@ public class Test3 {
 	}
 	@Test
 	public void testStaticTest(){
-		ArrayListe<Integer> arrayList = new ArrayListe<Integer>();
-		arrayList.hinzufugen(22);
-		arrayList.hinzufugen(44);
-		assertTrue(StaticTest.testErstesElementIstNummer(arrayList));
+		ArrayListe<String> arrayList1 = new ArrayListe<String>();
+		ArrayListe<Integer> arrayList2 = new ArrayListe<Integer>();
+		arrayList1.hinzufugen("bla");
+		arrayList1.hinzufugen("blub");
+		arrayList2.hinzufugen(2);
+		arrayList2.hinzufugen(3);
+		assertTrue(StaticTest.testErstesElementIstNummer(arrayList2));
+		assertFalse(StaticTest.testErstesElementIstNummer(arrayList1));
 	}
+	
 
 }

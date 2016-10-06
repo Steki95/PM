@@ -1,4 +1,4 @@
-package A1p1;
+package A1.p1;
 
 /**
  * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
@@ -45,13 +45,14 @@ public class Student implements Comparable<Student> {
 	public int getMartikelnummer() {
 		return martikelnummer;
 	}
+	
+	public List<Pruefungsleistung> getList(){
+		return list;
+	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + martikelnummer;
-		return result;
+		return (martikelnummer%100) * 31;
 	}
 
 	@Override

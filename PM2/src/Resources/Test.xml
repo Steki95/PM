@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE Sensor SYSTEM "Sensor.dtd">
 <Sensor id="Test">
-  <Messung wert="6,0" zeitstempel="2016-10-06T15:42:08.511"/>
-  <Messung wert="68,0" zeitstempel="2016-10-06T15:42:08.517"/>
+  <Messung wert="6,0" zeitstempel="2016-10-06T19:01:27.267"/>
+  <Messung wert="68,0" zeitstempel="2016-10-06T19:01:27.272"/>
 </Sensor>

@@ -1,4 +1,4 @@
-package A1p2;
+package A1.p2;
 
 /**
  * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
@@ -44,16 +44,17 @@ public class XmlLeser {
 		try {
 			builder = factory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 
 		try {
 			document = builder.parse(new File(filename));
 		} catch (SAXException e) {
-
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e) {
-
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -70,7 +71,6 @@ public class XmlLeser {
 		NodeList nodeList = document.getElementsByTagName("Sensor");
 		Node node;
 		Element element;
-		List<Messung> messungen = new ArrayList<Messung>();
 		double wert;
 		LocalDateTime zeitstempel;
 		String id;
@@ -82,6 +82,7 @@ public class XmlLeser {
 		if (node.getNodeType() == Node.ELEMENT_NODE){
 			element = (Element) node;
 			id = element.getAttribute("id");
+			Sensor sensor = new Sensor(id);
 			// Wenn der sensor messungen hatt werden sie hier gelesen und
 			// hizugefugt
 			if (node.hasChildNodes()) {
@@ -98,11 +99,11 @@ public class XmlLeser {
 						wertString = wertString.replace(',', '.');
 						wert = Double.parseDouble(wertString);
 						zeitstempel = LocalDateTime.parse(element.getAttribute("zeitstempel"));
-						messungen.add(new Messung(wert, zeitstempel));
+						sensor.addMessung(new Messung(wert, zeitstempel));
 					}
 				}
 				// Den fertigen Sensor zuruckgeben
-				return new Sensor(id, messungen);
+				return sensor;
 			} 
 		}
 		return null;

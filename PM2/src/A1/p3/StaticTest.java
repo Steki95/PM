@@ -1,4 +1,4 @@
-package A1p3;
+package A1.p3;
 
 public class StaticTest {
    
