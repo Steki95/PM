@@ -1,20 +1,31 @@
-package A1p1;
+package A1.p1;
 
 /**
- * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de), Mia
- * Meister (mia.meister@haw-hamburg.de) Aufgabe: Aufgabenblatt 1, Aufgabe 1.2
- * 
+ * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
+ * Dennis Bopp (dennis.bopp@haw-hamburg.de) 
+ * Aufgabe: Aufgabenblatt 1, Aufgabe 1.1
  */
 
 import java.util.List;
 
 public class Student implements Comparable<Student> {
-
-	private String vorname;// Vorname des Studenten
-	private String nachname;// Nachname des Studenten
-	private int martikelnummer;// Martikelnummer des Studenten
-	List<Pruefungsleistung> list;// Liste alle pruefungsleistungen des
-									// Studentens fuer alle facher
+	
+	/**
+	 *  Vorname des Studenten 
+	 */
+	private String vorname;
+	/**
+	 * Nachname des Studenten
+	 */
+	private String nachname; 
+	/**
+	 * Martikelnummer des Studenten
+	 */
+	private int martikelnummer; 
+	/**
+	 * Liste aller Pruefungsleistungen des Studentens fuer alle Faecher
+	 */
+	private List<Pruefungsleistung> list; 
 
 	public Student(String vorname, String nachname, int martikelnummer, List<Pruefungsleistung> list) {
 		this.vorname = vorname;
@@ -34,18 +45,19 @@ public class Student implements Comparable<Student> {
 	public int getMartikelnummer() {
 		return martikelnummer;
 	}
+	
+	public List<Pruefungsleistung> getList(){
+		return list;
+	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + martikelnummer;
-		return result;
+		return (martikelnummer%100) * 31;
 	}
 
 	@Override
 	/**
-	 * Vergleicht anhand der martikelnummer
+	 * Vergleicht anhand der Martikelnummer
 	 */
 	public boolean equals(Object obj) {
 		if (this == obj)

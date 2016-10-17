@@ -1,4 +1,10 @@
-package A1p2;
+package A1.p2;
+
+/**
+ * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
+ * Dennis Bopp (dennis.bopp@haw-hamburg.de) 
+ * Aufgabe: Aufgabenblatt 1, Aufgabe 1.3
+ */
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,15 +35,14 @@ public class Test2 {
 	}
 
 	/**
-	 * Testet ob XmlSchreiber ein richtiges dokument kreiert
+	 * Testet ob XmlSchreiber ein richtiges Dokument kreiert
 	 */
 	@Test
 	public void testXmlSchreiber() {
 		XmlSchreiber schreiber = new XmlSchreiber();
-		List<Messung> messungen = new ArrayList<Messung>();
-		messungen.add(new Messung(6.0, LocalDateTime.now()));
-		messungen.add(new Messung(6.0, LocalDateTime.now()));
-		Sensor sensor = new Sensor("Test", messungen);
+		Sensor sensor = new Sensor("Test");
+		sensor.addMessung(new Messung(6.0, LocalDateTime.now()));
+		sensor.addMessung(new Messung(68.0, LocalDateTime.now()));
 		schreiber.sensorLaden(sensor);
 		schreiber.schreiben("./src/Resources/Test.xml");
 		XmlLeser leser = new XmlLeser("./src/Resources/Test.xml");

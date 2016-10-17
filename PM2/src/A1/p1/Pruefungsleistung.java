@@ -1,15 +1,20 @@
-package A1p1;
+package A1.p1;
 
 /**
- * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de), Mia
- * Meister (mia.meister@haw-hamburg.de) Aufgabe: Aufgabenblatt 1, Aufgabe 1.2
- * 
+ * Praktikum TIPR2, WS 2016 Gruppe: Stefan Belic (stefan_belic@haw.de) 
+ * Dennis Bopp (dennis.bopp@haw-hamburg.de) 
+ * Aufgabe: Aufgabenblatt 1, Aufgabe 1.1
  */
 
 public class Pruefungsleistung {
-
-	private String modulName;// Name des modules
-	private double note;// Note in denn modul
+	/**
+	 * Name des Moduls
+	 */
+	private String modulName;
+	/**
+	 * Note in dem Modul
+	 */
+	private double note;
 
 	public Pruefungsleistung(String modulName, double note) {
 		this.modulName = modulName;
