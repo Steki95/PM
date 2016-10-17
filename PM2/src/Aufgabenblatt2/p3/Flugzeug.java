@@ -2,9 +2,21 @@ package Aufgabenblatt2.p3;
 
 public class Flugzeug extends Thread {
 	
+	/**
+	 * Flughafen wo das Flugzeug landen will
+	 */
 	private Flughafen flughafen;
+	/**
+	 * Die id des flugzeugs
+	 */
 	private String id;
+	/**
+	 * flugdauer des flugzeug flugs
+	 */
 	private int flugdauer;
+	/**
+	 * status des flugzeug flugs
+	 */
 	private Status status;
 	
 	public Flugzeug(String id,Flughafen flughafen,int flugdauer){
@@ -17,6 +29,9 @@ public class Flugzeug extends Thread {
 		this.status = status;
 	}
 	
+	/** Die haupt methode des threads. Wiederholt eine schleife bis die flugdauer >0
+	 * und dann ruft er die landen methode des flughafens.
+	 */
 	@Override
 	public void run(){
 		while(flugdauer>0){
